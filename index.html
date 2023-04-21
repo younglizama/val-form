@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validacion Formulario</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+    <style type="text/css">
+        body{
+            background-color: #00ffe1;
+            padding-top: 100px;
+        }
+
+        #container{
+
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border-radius: 10px;
+            box-shadow:0 0 20px rgba(0,0,0,0.5);
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            font-family: 'comfortaa',sans-serif;
+            font-size: 18px;
+            margin: 0 auto;
+            padding: 30px;
+            width: 350px;
+        }
+
+        .campo{
+
+            border: solid 4px #cece76;
+            font-size: 18px;
+            padding: 10px;
+            margin-bottom: 35px;
+            width: 300px;
+        }
+
+
+        .boton{
+
+            background: #849175;
+            border: solid 0 ;
+            color: #fff;
+            padding:10px ;
+        }
+
+
+        .errores{
+
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            background: red;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            color: #fff;
+            display: none;
+            font-size: 14px;
+            margin-top: -80px;
+            margin-left: 340px;
+            padding: 10px;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        var expr = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-z0-9\-\.]+$/;
+
+        $(document).ready(function(){
+            $("#Enviar").click(function(){
+                var nombre= $("#Nombre").val();
+                var correo= $("#Email").val();
+                var asunto= $("#Asunto").val();
+
+                if(nombre == ""){
+                    $("#adv1").fadeIn();
+                    return false;
+                }else{
+                    $("#adv1").fadeOut();
+                    if(correo == "" ||!expr.test(correo)){
+                        $("#adv2").fadeIn();
+                        return false;
+                    }else{
+                        $("#adv2").fadeOut();
+                        if(asunto == ""){
+                            $("#adv3").fadeIn();
+                            return false;
+                        }
+                    }
+                }
+
+            });
+        });
+    </script>
+        
+</head>
+<body>
+    <div id="container">
+        <form id="Formulario">
+
+            <label>Ingrese su nombre: </label><br />
+            <input type="text" id="Nombre" class="campo" /><br />
+            <div id="adv1" class="errores">Por favor ingrese su nombre</div>
+
+            <label>Ingrese su correo: </label><br />
+            <input type="text" id="Email" class="campo"/><br />
+            <div id="adv2" class="errores">Por favor ingrese su correo</div>
+
+            <label>Ingrese su asunto: </label><br />
+            <input type="text" id="Asunto" class="campo"/><br />
+            <div id="adv3" class="errores">Por favor ingrese su asunto</div>
+
+            <input type="submit" id="Enviar" value="Enviar informacion" class="boton" />
+            </form>
+        </div>
+    </body>
+</html>
